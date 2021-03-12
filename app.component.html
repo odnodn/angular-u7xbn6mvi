@@ -1,0 +1,692 @@
+<div class="control-section">
+
+  <!-- ACCORDION -->
+  <ejs-accordion>
+    <e-accordionitems>
+      <e-accordionitem expanded="true" header="LOCATION" iconCss="e-athletics e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="athletics" style="display:none">
+            <div>
+              <strong>Country</strong>
+              <ejs-chiplist #chipCountry id="chipCountry" selection="Single"
+                [selectedChips]="this.choiceCountrySelected">
+                <e-chips>
+                  <e-chip *ngFor="let country of countries" text="{{country}}" avatarIconCss="text"></e-chip>
+                </e-chips>
+              </ejs-chiplist>
+            </div>
+            <div>
+              <strong>City</strong>
+              <ejs-chiplist #chipCity id="chipCity" selection="Single" [selectedChips]="this.choiceCitySelected">
+                <e-chips>
+                  <e-chip *ngFor="let city of cities" text="{{city}}" avatarIconCss="text"></e-chip>
+                </e-chips>
+              </ejs-chiplist>
+            </div>
+
+            <div>
+              <strong>Clinic</strong>
+              <ejs-chiplist #chipClinic id="chipClinic" selection="Single" [selectedChips]="this.choiceClinicSelected">
+                <e-chips>
+                  <e-chip *ngFor="let clinic of clinics" text="{{clinic}}" avatarIconCss="text"></e-chip>
+                </e-chips>
+              </ejs-chiplist>
+            </div>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+
+      <e-accordionitem header="LANGUAGE" expanded="this.expanded" iconCss="e-water-game e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="water_games" style="display:none">
+            <ejs-chiplist #chipLanguage id="chipLanguage" selection="Single"
+              [selectedChips]="this.choiceLanguageSelected"
+              (click)="chipLanguageClick($event)">
+              <e-chips>
+                <e-chip *ngFor="let language of languages" text="{{language}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="COUNTRY OF ORIGN" expanded="this.expanded" iconCss="e-racing-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="racing_games" style="display:none">
+            <ejs-chiplist #chipCountryOfOrign id="chipCountryOfOrign" selection="Single"
+              [selectedChips]="this.choiceCountryOfOrignSelected">
+              <e-chips>
+                <e-chip *ngFor="let countryOfOrign of countryOfOrigns" text="{{countryOfOrign}}" avatarIconCss="text">
+                </e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="INSURANCE" expanded="this.expanded" iconCss="e-indoor-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="indoor_games" style="display:none">
+            <ejs-chiplist #chipInsurance id="chipInsurance" selection="Single"
+              [selectedChips]="this.choiceInsuranceSelected"
+              (click)="chipInsuranceClick($event)">
+              <e-chips>
+                <e-chip *ngFor="let insurance of insurances" text="{{insurance}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+
+      <e-accordionitem header="AGE GROUP" expanded="this.expanded" iconCss="e-water-game e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="water_games" style="display:none">
+            <ejs-chiplist #chipAgeGroup id="chipAgeGroup" selection="Single"
+              [selectedChips]="this.choiceAgeGroupSelected"
+              (click)="chipAgeGroupClick($event)">
+              <e-chips>
+                <e-chip *ngFor="let ageGroup of ageGroups" text="{{ageGroup}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="SEX" expanded="this.expanded" iconCss="e-racing-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="racing_games" style="display:none">
+            <ejs-chiplist #chipSex id="chipSex" selection="Single" [selectedChips]="this.choiceSexSelected"
+            (click)="chipSexClick($event)">
+              <e-chips>
+                <e-chip *ngFor="let sex of sexs" text="{{sex}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="FAMILY SITUATION"  expanded="true" iconCss="e-indoor-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="indoor_games" style="display:none">
+            <ejs-chiplist #chipFamilySituation id="chipFamilySituation" selection="Single"
+              [selectedChips]="this.choiceFamilySituationSelected">
+              <e-chips>
+                <e-chip *ngFor="let familySituation of familySituations" text="{{familySituation}}"
+                  avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+
+      <e-accordionitem header="SPECIAL CONDITIONS" expanded="this.expanded" iconCss="e-water-game e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="water_games" style="display:none">
+            <ejs-chiplist #chipSpecialConditions id="chipSpecialConditions" selection="Single"
+              [selectedChips]="this.choiceSpecialConditionsSelected"
+              (click)="chipSpecialConditionsClick($event)">
+              <e-chips>
+                <e-chip *ngFor="let specialCondition of specialConditions" text="{{specialCondition}}"
+                  avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="HOUSING"  expanded="true" iconCss="e-racing-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="racing_games" style="display:none">
+            <ejs-chiplist #chipHousing id="chipHousing" selection="Single" [selectedChips]="this.choiceHousingSelected">
+              <e-chips>
+                <e-chip *ngFor="let housing of housings" text="{{housing}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="ENCOUNTER" expanded="this.expanded" iconCss="e-indoor-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="indoor_games" style="display:none">
+            <ejs-chiplist #chipEncounter id="chipEncounter" selection="Single"
+              [selectedChips]="this.choiceEncounterSelected">
+              <e-chips>
+                <e-chip *ngFor="let encounter of encounters" text="{{encounter}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+
+      <e-accordionitem header="CONDITIONS" expanded="this.expanded" iconCss="e-water-game e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="water_games" style="display:none">
+            <ejs-chiplist #chipConditions id="chipConditions" selection="Single"
+              [selectedChips]="this.choiceConditionSelected">
+              <e-chips>
+                <e-chip *ngFor="let condition of conditions" text="{{condition}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="AFFECTED BODY SYSTEM" expanded="this.expanded" iconCss="e-racing-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="racing_games" style="display:none">
+            <ejs-chiplist #chipAffectedBodySystem id="chipAffectedBodySystem" selection="Multiple"
+              [selectedChips]="this.choiceAffectedBodySystemSelected"
+              (click)="chipAffectedBodySystemClick($event)">
+              <e-chips>
+                <e-chip *ngFor="let affectedBodySystem of affectedBodySystems" text="{{affectedBodySystem}}"
+                  avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="INFECTIONS"  expanded="true" iconCss="e-indoor-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="indoor_games" style="display:none">
+            <ejs-chiplist #chipInfections id="chipInfections" selection="Single"
+              [selectedChips]="this.choiceInfectionsSelected">
+              <e-chips>
+                <e-chip *ngFor="let infection of infections" text="{{infection}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+
+      <e-accordionitem header="MAIN COMPLAINT" expanded="this.expanded" iconCss="e-water-game e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="water_games" style="display:none">
+            <ejs-chiplist #chipMainComplaints id="chipMainComplaints" selection="Multiple"
+              [selectedChips]="this.choiceMainComplaintSelected"
+              (click)="chipMainComplaintClick($event)">
+              <e-chips>
+                <e-chip *ngFor="let mainComplaint of mainComplaints" text="{{mainComplaint}}" avatarIconCss="text">
+                </e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="COVID SYMPTOMS"  expanded="true" iconCss="e-racing-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="racing_games" style="display:none">
+            <ejs-chiplist #chipCovidSymptoms id="chipCovidSymptoms" selection="Multiple"
+              [selectedChips]="this.choiceCOVIDSymptomsSelected">
+              <e-chips>
+                <e-chip *ngFor="let covidSymptom of covidSymptoms" text="{{covidSymptom}}" avatarIconCss="text">
+                </e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="RELATIONS"  expanded="true" iconCss="e-indoor-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="indoor_games" style="display:none">
+            <ejs-chiplist #chipRelations id="chipRelations" selection="Single"
+              [selectedChips]="this.choiceRelationsSelected">
+              <e-chips>
+                <e-chip *ngFor="let relation of relations" text="{{relation}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+
+      <e-accordionitem header="PRIORITY"  expanded="true" iconCss="e-water-game e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="water_games" style="display:none">
+            <ejs-chiplist #chipPriority id="chipPriority" selection="Single"
+              [selectedChips]="this.choicePrioritySelected">
+              <e-chips>
+                <e-chip *ngFor="let prioritie of priorities" text="{{prioritie}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="SEVERITY"  expanded="true" iconCss="e-racing-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="racing_games" style="display:none">
+            <ejs-chiplist #chipSeverity id="chipSeverity" selection="Single"
+              [selectedChips]="this.choiceSeveritySelected">
+              <e-chips>
+                <e-chip *ngFor="let severitie of severities" text="{{severitie}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="ACTIONS"  expanded="true" iconCss="e-indoor-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="indoor_games" style="display:none">
+            <ejs-chiplist #chipActions id="chipActions" selection="Multiple"
+              [selectedChips]="this.choiceActionsSelected">
+              <e-chips>
+                <e-chip *ngFor="let action of actions" text="{{action}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+
+      <e-accordionitem header="REFERRALS"  expanded="true" iconCss="e-water-game e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="water_games" style="display:none">
+            <ejs-chiplist #chipReferrals id="chipReferrals" selection="Multiple"
+              [selectedChips]="this.choiceReferralsSelected"
+              (click)="chipReferralsClick($event)">
+              <e-chips>
+                <e-chip *ngFor="let referral of referrals" text="{{referral}}" avatarIconCss="text"></e-chip>
+              </e-chips>
+            </ejs-chiplist>
+          </div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="DELETE" iconCss="e-racing-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="racing_games" style="display:none"></div>
+        </ng-template>
+      </e-accordionitem>
+      <e-accordionitem header="DELETE" iconCss="e-indoor-games e-acrdn-icons">
+        <ng-template #content let-data>
+          <div id="indoor_games" style="display:none"></div>
+        </ng-template>
+      </e-accordionitem>
+    </e-accordionitems>
+  </ejs-accordion>
+
+
+  <div class="btn"><button class="e-control e-btn" (click)="exportSelected($event)">Export</button></div>
+
+  <div id="chip-default-wrapper">
+    <div class="chips-headers">Chips</div>
+
+    <div>
+      Location
+      <div>
+        Country
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceCountrySelected">
+          <e-chips>
+            <e-chip text="Greece" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+      <div>
+        City
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceCitySelected">
+          <e-chips>
+            <e-chip text="Athens" avatarIconCss="text"></e-chip>
+            <e-chip text="Lesvos" avatarIconCss="text"></e-chip>
+            <e-chip text="Thessaloniki" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Clinic
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceClinicSelected">
+          <e-chips>
+            <e-chip text="S" avatarIconCss="text"></e-chip>
+            <e-chip text="K" avatarIconCss="text"></e-chip>
+            <e-chip text="G" avatarIconCss="text"></e-chip>
+            <e-chip text="K" avatarIconCss="text"></e-chip>
+            <e-chip text="K" avatarIconCss="text"></e-chip>
+            <e-chip text="K" avatarIconCss="text"></e-chip>
+            <e-chip text="K" avatarIconCss="text"></e-chip>
+            <e-chip text="K" avatarIconCss="text"></e-chip>
+            <e-chip text="K" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Language
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceLanguageSelected">
+          <e-chips>
+            <e-chip text="English" avatarIconCss="text"></e-chip>
+            <e-chip text="French" avatarIconCss="text"></e-chip>
+            <e-chip text="Arabic" avatarIconCss="text"></e-chip>
+            <e-chip text="Farsi" avatarIconCss="text"></e-chip>
+            <e-chip text="Bangla" avatarIconCss="text"></e-chip>
+            <e-chip text="Somali" avatarIconCss="text"></e-chip>
+            <e-chip text="Urdu" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Country of Origin
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceCountryOfOrignSelected">
+          <e-chips>
+            <e-chip text="Syria" avatarIconCss="text"></e-chip>
+            <e-chip text="Afganistan" avatarIconCss="text"></e-chip>
+            <e-chip text="Irak" avatarIconCss="text"></e-chip>
+            <e-chip text="Iran" avatarIconCss="text"></e-chip>
+            <e-chip text="Jemen" avatarIconCss="text"></e-chip>
+            <e-chip text="Nigeria" avatarIconCss="text"></e-chip>
+            <e-chip text="Somalia" avatarIconCss="text"></e-chip>
+            <e-chip text="Eritrea" avatarIconCss="text"></e-chip>
+            <e-chip text="Kongo" avatarIconCss="text"></e-chip>
+            <e-chip text="Other" avatarIconCss="text"></e-chip>
+            <e-chip text="Uknown" avatarIconCss="text"></e-chip>
+            <e-chip text="Not asked" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Insurance
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceInsuranceSelected">
+          <e-chips>
+            <e-chip text="None" avatarIconCss="text"></e-chip>
+            <e-chip text="W" avatarIconCss="text"></e-chip>
+            <e-chip text="A" avatarIconCss="text"></e-chip>
+            <e-chip text="P" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Age group
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceAgeGroupSelected">
+          <e-chips>
+            <e-chip text="new born" avatarIconCss="text"></e-chip>
+            <e-chip text="0-10" avatarIconCss="text"></e-chip>
+            <e-chip text="11-20" avatarIconCss="text"></e-chip>
+            <e-chip text="21-30" avatarIconCss="text"></e-chip>
+            <e-chip text="31-40" avatarIconCss="text"></e-chip>
+            <e-chip text="41-50" avatarIconCss="text"></e-chip>
+            <e-chip text="51-60" avatarIconCss="text"></e-chip>
+            <e-chip text="61-70" avatarIconCss="text"></e-chip>
+            <e-chip text="71-80" avatarIconCss="text"></e-chip>
+            <e-chip text="80+" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Sex
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceSexSelected">
+          <e-chips>
+            <e-chip text="m" avatarIconCss="text"></e-chip>
+            <e-chip text="f" avatarIconCss="text"></e-chip>
+            <e-chip text="n" avatarIconCss="text"></e-chip>
+            <e-chip text="m2f" avatarIconCss="text"></e-chip>
+            <e-chip text="f2m" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Family situation
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceFamilySituationSelected">
+          <e-chips>
+            <e-chip text="Alone" avatarIconCss="text"></e-chip>
+            <e-chip text="with Father/Mother" avatarIconCss="text"></e-chip>
+            <e-chip text="with Father/Mother and Brothers/Sisters" avatarIconCss="text"></e-chip>
+            <e-chip text="Unknown" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Special conditions
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceSpeciialConditionsSelected">
+          <e-chips>
+            <e-chip text="pregnant" avatarIconCss="text"></e-chip>
+            <e-chip text="newborn" avatarIconCss="text"></e-chip>
+            <e-chip text="unaccompanied minor" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Housing
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceHousingSelected">
+          <e-chips>
+            <e-chip text="camp" avatarIconCss="text"></e-chip>
+            <e-chip text="apartment" avatarIconCss="text"></e-chip>
+            <e-chip text="street" avatarIconCss="text"></e-chip>
+            <e-chip text="other" avatarIconCss="text"></e-chip>
+            <e-chip text="unknown" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Encounter
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceEncounterSelected">
+          <e-chips>
+            <e-chip text="first contact" avatarIconCss="text"></e-chip>
+            <e-chip text="follow up" avatarIconCss="text"></e-chip>
+            <e-chip text="referral" avatarIconCss="text"></e-chip>
+            <e-chip text="pick up" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Condition
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceConditionSelected">
+          <e-chips>
+            <e-chip text="acute" avatarIconCss="text"></e-chip>
+            <e-chip text="chronic" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Affected body system
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceAffectedBodySystemSelected">
+          <e-chips>
+            <e-chip text="cardiovascular" avatarIconCss="text"></e-chip>
+            <e-chip text="respiratory" avatarIconCss="text"></e-chip>
+            <e-chip text="renal" avatarIconCss="text"></e-chip>
+            <e-chip text="endocrine" avatarIconCss="text"></e-chip>
+            <e-chip text="gastrointestinal" avatarIconCss="text"></e-chip>
+            <e-chip text="urogenital" avatarIconCss="text"></e-chip>
+            <e-chip text="dermal" avatarIconCss="text"></e-chip>
+            <e-chip text="muscoloskelettal" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Infections
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceInfectionsSelected">
+          <e-chips>
+            <e-chip text="COVID19" avatarIconCss="text"></e-chip>
+            <e-chip text="Tuberculosis" avatarIconCss="text"></e-chip>
+            <e-chip text="Scabies" avatarIconCss="text"></e-chip>
+            <e-chip text="bed bugs" avatarIconCss="text"></e-chip>
+            <e-chip text="lices" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Main complaint
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceMainComplaintSelected">
+          <e-chips>
+            <e-chip text="infection" avatarIconCss="text"></e-chip>
+            <e-chip text="injury" avatarIconCss="text"></e-chip>
+            <e-chip text="wound" avatarIconCss="text"></e-chip>
+            <e-chip text="insect byte" avatarIconCss="text"></e-chip>
+            <e-chip text="diarrhoea" avatarIconCss="text"></e-chip>
+            <e-chip text="vomitting" avatarIconCss="text"></e-chip>
+            <e-chip text="constipation" avatarIconCss="text"></e-chip>
+            <e-chip text="pruritus" avatarIconCss="text"></e-chip>
+            <e-chip text="pain" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        COVID symptoms
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceCOVIDSymptomsSelected">
+          <e-chips>
+            <e-chip text="rhinorrhoe/sniff" avatarIconCss="text"></e-chip>
+            <e-chip text="sore throat" avatarIconCss="text"></e-chip>
+            <e-chip text="fever" avatarIconCss="text"></e-chip>
+            <e-chip text="cough" avatarIconCss="text"></e-chip>
+            <e-chip text="body aches" avatarIconCss="text"></e-chip>
+            <e-chip text="muscle pain" avatarIconCss="text"></e-chip>
+            <e-chip text="taste disorder" avatarIconCss="text"></e-chip>
+            <e-chip text="odor disorder" avatarIconCss="text"></e-chip>
+            <e-chip text="diarrhoea" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Relations
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceRelationsSelected">
+          <e-chips>
+            <e-chip text="hasChild" avatarIconCss="text"></e-chip>
+            <e-chip text="hasChildren" avatarIconCss="text"></e-chip>
+            <e-chip text="hasSon" avatarIconCss="text"></e-chip>
+            <e-chip text="hasDaughter" avatarIconCss="text"></e-chip>
+            <e-chip text="hasSpouse" avatarIconCss="text"></e-chip>
+            <e-chip text="hasSiblings" avatarIconCss="text"></e-chip>
+            <e-chip text="hasSister" avatarIconCss="text"></e-chip>
+            <e-chip text="hasBrother" avatarIconCss="text"></e-chip>
+            <e-chip text="hasMother" avatarIconCss="text"></e-chip>
+            <e-chip text="hasFather" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Priority
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choicePrioritySelected">
+          <e-chips>
+            <e-chip text="normal" avatarIconCss="text"></e-chip>
+            <e-chip text="urgent" avatarIconCss="text"></e-chip>
+            <e-chip text="emergency" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Severity
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceSeveritySelected">
+          <e-chips>
+            <e-chip text="minor" avatarIconCss="text"></e-chip>
+            <e-chip text="severe" avatarIconCss="text"></e-chip>
+            <e-chip text="other" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Actions
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceActionsSelected">
+          <e-chips>
+            <e-chip text="Discharge" avatarIconCss="text"></e-chip>
+            <e-chip text="Follow-up" avatarIconCss="text"></e-chip>
+            <e-chip text="ReferralOtherNGO" avatarIconCss="text"></e-chip>
+            <e-chip text="ReferralSpecialist" avatarIconCss="text"></e-chip>
+            <e-chip text="ReferralHospital" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+
+      <div>
+        Referrals
+        <ejs-chiplist id="chip-choice" selection="Single" [selectedChips]="this.choiceReferralsSelected">
+          <e-chips>
+            <e-chip text="M" avatarIconCss="text"></e-chip>
+            <e-chip text="P" avatarIconCss="text"></e-chip>
+            <e-chip text="M" avatarIconCss="text"></e-chip>
+            <e-chip text="M" avatarIconCss="text"></e-chip>
+            <e-chip text="S" avatarIconCss="text"></e-chip>
+            <e-chip text="A" avatarIconCss="text"></e-chip>
+            <e-chip text="S" avatarIconCss="text"></e-chip>
+            <e-chip text="G" avatarIconCss="text"></e-chip>
+            <e-chip text="S" avatarIconCss="text"></e-chip>
+            <e-chip text="24" avatarIconCss="text"></e-chip>
+            <e-chip text="K" avatarIconCss="text"></e-chip>
+            <e-chip text="K" avatarIconCss="text"></e-chip>
+            <e-chip text="M" avatarIconCss="text"></e-chip>
+          </e-chips>
+        </ejs-chiplist>
+      </div>
+    </div>
+
+    <div>
+      <ejs-chiplist selection="Multiple">
+        <e-chips>
+          <e-chip *ngFor="let chip of chips" text="{{chip}}"></e-chip>
+        </e-chips>
+      </ejs-chiplist>
+    </div>
+
+    <div>
+      <ejs-chiplist selection="Single">
+        <e-chips>
+          <e-chip *ngFor="let chip of chips" text="{{chip}}"></e-chip>
+        </e-chips>
+      </ejs-chiplist>
+    </div>
+
+    <div class="sample-padding">
+      <ejs-chiplist id="chip-default">
+        <e-chips>
+          <e-chip text="Apple" cssClass="e-primary"></e-chip>
+          <e-chip text="Microsoft" cssClass="e-info"></e-chip>
+          <e-chip text="Google" cssClass="e-success"></e-chip>
+          <e-chip text="Tesla" cssClass="e-warning"></e-chip>
+          <e-chip text="Intel" cssClass="e-danger"></e-chip>
+        </e-chips>
+      </ejs-chiplist>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="chips-headers">Input Chips</div>
+
+    <div class="sample-padding">
+      <ejs-chiplist id="chip-avatar" enableDelete="true">
+        <e-chips>
+          <e-chip text="Anne" leadingIconCss="anne"></e-chip>
+          <e-chip text="Janet" leadingIconCss="janet"></e-chip>
+          <e-chip text="Laura" leadingIconCss="laura"></e-chip>
+          <e-chip text="Margaret" leadingIconCss="margaret"></e-chip>
+        </e-chips>
+      </ejs-chiplist>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="chips-headers">Filter Chips</div>
+
+    <div class="sample-padding">
+      <ejs-chiplist id="chip-filter" selection="Multiple" [selectedChips]="this.filterSelected">
+        <e-chips>
+          <e-chip text="Extra small"></e-chip>
+          <e-chip text="Small"></e-chip>
+          <e-chip text="Medium"></e-chip>
+          <e-chip text="Large"></e-chip>
+          <e-chip text="Extra large"></e-chip>
+        </e-chips>
+      </ejs-chiplist>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="chips-headers">Choice Chips</div>
+
+    <div class="sample-padding">
+      <ejs-chiplist id="chip-choice" selection="Single" cssClass="e-outline" [selectedChips]="this.choiceSelected">
+        <e-chips>
+          <e-chip text="Send a text" avatarIconCss="text"></e-chip>
+          <e-chip text="Set a remainder" avatarIconCss="alarm"></e-chip>
+          <e-chip text="Read my emails" avatarIconCss="mail"></e-chip>
+          <e-chip text="Play a game" avatarIconCss="game"></e-chip>
+        </e-chips>
+      </ejs-chiplist>
+    </div>
+  </div>
+
+
+</div>

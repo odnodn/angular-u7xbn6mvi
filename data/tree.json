@@ -1,0 +1,186 @@
+{
+  "ngo": {
+    "Location": {
+      "Country": [
+        "Greece"
+      ],
+      "City": [
+        "A",
+        "T",
+        "L"
+      ],
+      "Clinic": [
+        "SA",
+        "Kho",
+        "G",
+        "S C",
+        "S O",
+        "Greece",
+        "JRJS",
+        "C L",
+        "C E",
+        "C K"
+      ]
+    },
+    "Language": [
+      "English",
+      "French",
+      "Arabic",
+      "Farsi",
+      "Bangla",
+      "Somali",
+      "Urdu",
+      "Kurdish",
+      "Turkish"
+    ],
+    "CountryOfOrign": [
+      "Syria",
+      "Afganistan",
+      "Irak",
+      "Iran",
+      "Jemen",
+      "Nigeria",
+      "Somalia",
+      "Eritrea",
+      "Kongo",
+      "Other",
+      "Unknown",
+      "Not asked"
+    ],
+    "Insurance": [
+      "NONE",
+      "W",
+      "A",
+      "P"
+    ],
+    "Age Group": [
+      "new born",
+      "0-10",
+      "11-20",
+      "21-30",
+      "31-40",
+      "41-50",
+      "51-60",
+      "61-70",
+      "71-80",
+      "80+"
+    ],
+    "Sex": [
+      "m",
+      "f",
+      "n",
+      "m2f",
+      "f2m"
+    ],
+    "Family situation": [
+      "Alone",
+      "with Father/Mother",
+      "with Father/Mother and Brothers/Sisters",
+      "unknown"
+    ],
+    "Special conditions": [
+      "pregnant",
+      "newborn",
+      "unaccompanied Minor"
+    ],
+    "Housing": [
+      "camp",
+      "apartment",
+      "street",
+      "other",
+      "unknown"
+    ],
+    "Encounter": [
+      "first contact",
+      "follow up",
+      "referral",
+      "pick up"
+    ],
+    "Condition": [
+      "acute",
+      "chronic"
+    ],
+    "Affected body system": [
+      "cardiovascular",
+      "respiratory",
+      "renal",
+      "endocrine",
+      "gastrointestinal",
+      "urogenital",
+      "dermal",
+      "muscosloscelettal"
+    ],
+    "Infections": [
+      "COVID19",
+      "Tuberculosis",
+      "Scabies",
+      "bed bugs",
+      "lices"
+    ],
+    "Main complaint": [
+      "infection",
+      "injury",
+      "wound",
+      "insect byte",
+      "diarrhoea",
+      "vomitting",
+      "constipation",
+      "pruritus",
+      "pain"
+    ],
+    "COVID symptoms": [
+      "rhinorroe/sniff",
+      "sore throat",
+      "fever",
+      "cough",
+      "body aches",
+      "muscle pain",
+      "taste disorders",
+      "odor disorders",
+      "diarrhoea"
+    ],
+    "Relations": [
+      "hasChild",
+      "hasChildren",
+      "hasSon",
+      "hasDaughter",
+      "hasSpouse",
+      "hasSiblings",
+      "hasSister",
+      "hasBrother",
+      "hasMother",
+      "hasFather"
+    ],
+    "Priority": [
+      "normal",
+      "urgent",
+      "emergency"
+    ],
+    "Severity": [
+      "minor",
+      "severe"
+    ],
+    "Actions": [
+      "Discharge",
+      "Followup",
+      "ReferralOtherNGO",
+      "ReferralSpecialist",
+      "ReferralHospital"
+    ],
+    "Referrals": [
+      "M",
+      "P",
+      "M",
+      "M",
+      "S",
+      "A",
+      "S",
+      "G",
+      "S",
+      "24",
+      "K",
+      "K",
+      "M"
+    ]
+  }
+}
