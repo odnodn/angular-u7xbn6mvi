@@ -435,21 +435,17 @@ export class AppComponent implements OnInit {
   }
 
 
+  // AgeGroup     1 Children 2 Adult 3 Both
+  // GenderGroup  1 Female 2 Male 3 N 4 Alle
+  // 
   linqFilter(){
     let referrals = new List<Referral>();
     
     ref.forEach( el => referrals.Add(el));
 
-    const res = referrals.Where( x => x.AMKAPAAYPA == 0);
+    const res = referrals.Where( x => x.AMKAPAAYPA == 1 && x.Gender > 0
+                                && x.AgeGroup == 1);
     console.log(res)
 
-    let persons = new List<Person>([
-      { name: "Test1", age: 20},
-      { name: "Test2", age:30},
-      { name: "Test3", age: 40}
-    ]);
-
-    const testpersons = persons.Where(x => x.age == 30);
-    console.log(testpersons);
   }
 }
