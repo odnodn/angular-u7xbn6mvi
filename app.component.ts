@@ -5,7 +5,34 @@ import { ChipListComponent } from "@syncfusion/ej2-angular-buttons";
 import { ClickEventArgs } from "@syncfusion/ej2-buttons";
 
 import tree from "./data/tree.json";
+import ref from "./data/ref.json";
 import { JSONPath } from "jsonpath-plus";
+import { List } from 'linqts';
+
+export interface Referral {
+   Active: number,
+   LastUpdated: string,
+   Clinic: string,
+   Offering: string,
+   Description: string,
+   Gender: number,
+   AgeGroup: number,
+   AMKAPAAYPA: number,
+   Arab: number,
+   English: number,
+   Farsi: number,
+   French: number,
+   Greek: number,
+   Urdu: number,
+   Turkish: number,
+   Pashtun: number,
+   Comment: string 
+}
+
+export interface Person {
+  name: string,
+  age: number
+}
 
 /**
  * Default Chips component
@@ -190,6 +217,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     console.log(tree);
     console.log(tree.ngo.Location.Country);
+    this.filterRefOnInuranceStatus(1);
+    this.filterDynamic(this.testFilter);
+
+    this.linqFilter();
   }
 
   hasInsurance: boolean | undefined;
@@ -208,17 +239,18 @@ export class AppComponent implements OnInit {
           this.hasInsurance = false;
       }
       this.currentInsuranceTyp = e.text;
-      console.log("Insurance: " + this.hasInsurance + " - (Type: " + e.text + ")");
+      console.log(
+        "Insurance: " + this.hasInsurance + " - (Type: " + e.text + ")"
+      );
       this.chipSelected("Insurance", e.text);
-
     }
   }
 
   isAdult: boolean | undefined;
 
   chipAgeGroupClick(e: ClickEventArgs) {
-    if (e.text){
-      switch (e.text){
+    if (e.text) {
+      switch (e.text) {
         case "new born":
         case "0-10":
         case "11-20":
@@ -230,11 +262,10 @@ export class AppComponent implements OnInit {
       console.log("IsAdult: " + this.isAdult);
       this.chipSelected("AgeGroup", e.text);
     }
-
   }
 
   chipSexClick(e: ClickEventArgs) {
-    if (e.text){
+    if (e.text) {
       this.currentSex = e.text;
       console.log("CurrentSex: " + this.currentSex);
       this.chipSelected("Sex", e.text);
@@ -254,27 +285,27 @@ export class AppComponent implements OnInit {
   }
 
   chipAffectedBodySystemClick(e: ClickEventArgs) {
-    if(e.text){
+    if (e.text) {
       this.chipSelected("AffectedBodySystem", e.text);
     }
   }
   chipMainComplaintClick(e: ClickEventArgs) {
-    if(e.text){
+    if (e.text) {
       this.chipSelected("MainComplaint", e.text);
-      console.log("Main complaint :" + e.text)
+      console.log("Main complaint :" + e.text);
     }
   }
 
-  chipReferralsClick(e: ClickEventArgs){
-    if(e.text){
+  chipReferralsClick(e: ClickEventArgs) {
+    if (e.text) {
       this.chipSelected("Referrals", e.text);
     }
   }
 
   chipSelected(groupname: string, text: string) {
-    if(groupname){
+    if (groupname) {
       console.log(groupname);
-      switch (groupname){
+      switch (groupname) {
         case "Insurance":
           this.updateReferrals();
           break;
@@ -298,32 +329,53 @@ export class AppComponent implements OnInit {
     }
   }
 
-  updateReferrals(){
+  updateReferrals() {
     console.log("hasInsurance undefined? :" + this.hasInsurance === undefined);
     console.log("isAdult undefined? :" + this.isAdult === undefined);
     console.log("this.currentSex !== :" + this.currentSex !== "");
     console.log("his.currentLanguage !== :" + this.currentLanguage !== "");
 
-    if(!this.hasInsurance === undefined && !this.isAdult === undefined && this.currentSex !== "" && this.currentLanguage !== ""){
-        this.selectReferrals(this.currentSex, this.isAdult, this.hasInsurance, this.currentLanguage);
+    if (
+      !this.hasInsurance === undefined &&
+      !this.isAdult === undefined &&
+      this.currentSex !== "" &&
+      this.currentLanguage !== ""
+    ) {
+      this.selectReferrals(
+        this.currentSex,
+        this.isAdult,
+        this.hasInsurance,
+        this.currentLanguage
+      );
     }
-    this.selectReferrals(this.currentSex, this.isAdult, this.hasInsurance, this.currentLanguage);
+    this.selectReferrals(
+      this.currentSex,
+      this.isAdult,
+      this.hasInsurance,
+      this.currentLanguage
+    );
   }
 
-  selectReferrals(sex:string, isAdult: boolean, hasInsurance: boolean, language:string){
-      console.log(`Sex: ${sex} - isAdult: ${isAdult} - hasInsurance: ${hasInsurance} - language: ${language}`);
-
+  selectReferrals(
+    sex: string,
+    isAdult: boolean,
+    hasInsurance: boolean,
+    language: string
+  ) {
+    console.log(
+      `Sex: ${sex} - isAdult: ${isAdult} - hasInsurance: ${hasInsurance} - language: ${language}`
+    );
   }
 
-  selectSOAPTemplate(condition:string){
+  selectSOAPTemplate(condition: string) {
     console.log("SOAPTemplate for " + condition);
   }
 
-  selectDifferentialDiagnoses(){}
+  selectDifferentialDiagnoses() {}
 
-  selectMedicationForCondition(){}
+  selectMedicationForCondition() {}
 
-  selectMedicalGuidelinesFromCondition(){}
+  selectMedicalGuidelinesFromCondition() {}
 
   export: object;
   exportSelected() {
@@ -353,5 +405,51 @@ export class AppComponent implements OnInit {
     };
 
     console.log(this.export);
+  }
+
+  // filterItems(data, [{ key: 'type', value: 'wood' }, { key: 'some.nested.prop', value: 'value' }])
+  // https://stackoverflow.com/questions/31170630/js-array-filter-with-dynamic-filter-criterion
+  filterItems = (data, filters) =>
+    data.filter(
+      item =>
+        !filters.find(
+          x =>
+            x.key.split(".").reduce((keys, key) => keys[key], item) !== x.value
+        )
+    );
+
+  filterRefOnInuranceStatus(hasInsurance: boolean) {
+    const filtered = ref.filter(el => el.AMKAPAAYPA === hasInsurance);
+
+    console.log(filtered);
+  }
+
+  testFilter = [{key: 'AMKAPAAYPA', value: '0'},
+                {key: 'Gender', value: '2'},
+                {key: 'AgeGroup', value: '2'}];
+
+  filterDynamic(filterArray){
+    const filtered = this.filterItems(ref, filterArray);
+
+    console.log(filtered);
+  }
+
+
+  linqFilter(){
+    let referrals = new List<Referral>();
+    
+    ref.forEach( el => referrals.Add(el));
+
+    const res = referrals.Where( x => x.AMKAPAAYPA == 0);
+    console.log(res)
+
+    let persons = new List<Person>([
+      { name: "Test1", age: 20},
+      { name: "Test2", age:30},
+      { name: "Test3", age: 40}
+    ]);
+
+    const testpersons = persons.Where(x => x.age == 30);
+    console.log(testpersons);
   }
 }
